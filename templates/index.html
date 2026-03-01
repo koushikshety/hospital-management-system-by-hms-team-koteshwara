@@ -1,171 +1,121 @@
-
-
-{% if user.is_authenticated %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-{% load static %}
-<link rel="shortcut icon" type="image/png" href="{% static 'images/kou_fav4.png' %}">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HMS team</title>
-<link rel="stylesheet" href="{% static 'css/index1.css' %}">
-<link rel="stylesheet" href="{% static 'css/messages.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS Team</title>
+    
+    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/kou_fav4.png' %}">
 
+    <style>
+        /* Modernized Styles */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+        .bg { padding: 40px 20px; text-align: center; }
+        
+        /* Navigation Styles */
+        nav ul { display: flex; justify-content: center; list-style: none; padding: 0; background: #333; }
+        nav ul li a { color: white; padding: 15px 20px; display: block; text-decoration: none; transition: 0.3s; }
+        nav ul li a:hover { background-color: #555; }
 
+        /* Logout Button */
+        #ok1 {
+            border-radius: 25px;
+            padding: 12px 30px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #ok1:hover { background-color: #c9302c; }
 
+        /* Content Sections */
+        .info-section { max-width: 900px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        .message-box { text-align: center; color: #d9534f; font-weight: bold; margin: 15px 0; }
+        h1 { color: #2c3e50; text-transform: uppercase; }
+    </style>
 </head>
-<body  id="ok3">
-  <!-- <style>
-  </style> -->
 
-  <div class="bg">
+<body>
 
-    <h1 id="h1"><strong>HELLO {{user.username}},WELCOME TO OUR HOSPITAL MANAGEMENT SYSTEM</strong></h1>
-<br>
+{% if user.is_authenticated %}
+    <div class="bg">
+        <h1 id="h1"><strong>Welcome, {{ user.username }}</strong></h1>
+        <p>HOSPITAL MANAGEMENT SYSTEM DASHBOARD</p>
 
-    
-<nav class="navbar1">
-  <br>
-<ul id="um">
-  
-  
-  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/main">DASHBOARD</a></li>
-  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/about">ABOUT</a></li>
-  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/terms">TERMS AND CONDITION</a></li>
-  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/profile">ADMINISTRATERS</a></li>
-  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/admin">ADMIN'S LOGIN</a></li>
+        <nav class="navbar1">
+            <ul id="um">
+                <li><a href="http://127.0.0.1:8000/main">DASHBOARD</a></li>
+                <li><a href="http://127.0.0.1:8000/about">ABOUT</a></li>
+                <li><a href="http://127.0.0.1:8000/terms">TERMS AND CONDITION</a></li>
+                <li><a href="http://127.0.0.1:8000/profile">ADMINISTRATORS</a></li>
+                <li><a href="http://127.0.0.1:8000/admin">ADMIN'S LOGIN</a></li>
+            </ul>
+        </nav>
 
+        <div class="message-box">
+            {% for msg in messages %}{{ msg }}{% endfor %}
+        </div>
 
-</ul>
-<br>
-<!-- <style>
-
-</style> -->
-</nav>
-<br>
-
-<main id="success-msg">
-  {% for msg in  messages %}
-  
-  {{msg}}
-  
-  {% endfor %}
-
-</main>
-<br>
-
-
-<form action="{% url 'logout' %}" method="post">
-  {% csrf_token %}
-  <button id="ok1" type="submit" class="btn btn-outline-danger"><span class="ti-new-window"></span> LOGOUT</button>
-
-</form>
-</div>
-<style>
-  #ok1{
-    border-radius: 50%;
-    padding: 10px;
-    background-color: red;
-    color: white;
-  }
-  *{
-    text-decoration: none;
-    list-style-type: none;
-  }
-  h1{
-    text-align: center;
-  }
-  /* h1:hover{
-    
-    background-color: white;
-  } */
-
-  /* .navbar1{
-    background-color: rgb(244, 12, 12);
-  } */
-
-</style>
-
-</body>
-</html>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button id="ok1" type="submit">LOGOUT</button>
+        </form>
+    </div>
 
 {% else %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-{% load static %}
-<link rel="shortcut icon" type="image/png" href="{% static 'images/kou_fav4.png' %}">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HMS TEAM</title>
+    <div class="bg">
+        <h1>WELCOME TO HOSPITAL MANAGEMENT SYSTEM</h1>
 
-</head>
-<body >
-  <link rel="stylesheet" href="{% static 'css/messages.css' %}">
-  <link rel="stylesheet" href="{% static 'css/index2.css' %}">
-  
-<h1>WELCOME TO HOSPITAL MANAGEMENT SYSTEM WEBSITE </h1>
+        <nav class="navbar">
+            <ul id="ok2">
+                <li><a href="http://127.0.0.1:8000/about">ABOUT</a></li>
+                <li><a href="http://127.0.0.1:8000/accounts/login/">LOGIN</a></li>
+                <li><a href="http://127.0.0.1:8000/accounts/sign_up">SIGN UP</a></li>
+                <li><a href="http://127.0.0.1:8000/admin">ADMIN</a></li>
+            </ul>
+        </nav>
 
-<nav class="navbar">
-<ul id="ok2">
-	<li id="ok"><a id="ok1" href="http://127.0.0.1:8000/about">ABOUT</a></li>
-	<li id="ok"><a id="ok1" href="http://127.0.0.1:8000/accounts/login/">LOGIN</a></li>
-	<li id="ok"><a id="ok1" href="http://127.0.0.1:8000/accounts/sign_up">SIGN UP</a></li>
-	<li id="ok"><a id="ok1" href="http://127.0.0.1:8000/admin">ADMIN</a></li>
-</ul>
-</nav>
-<br>
-<br>
-<br>
-<br>
-<br>
-<main id="error-msg">
-  {% for msg1 in  messages %}
-  {{msg1}}
-  {% endfor %}
+        <div class="message-box">
+            {% for msg1 in messages %}{{ msg1 }}{% endfor %}
+        </div>
 
-</main>
-<br>
+        <article class="info-section">
+            <h2>Why Online Hospital Management Systems Matter</h2>
+            <p>In today's digital age, online hospital management systems offer significant benefits for both healthcare providers and patients.</p>
+            
+            
+
+[Image of hospital management system workflow diagram]
 
 
-<main>
-	<title>Importance of Online Hospital Management Systems</title>
-</head>
-<body>
-  <h1>Why Online Hospital Management Systems Matter</h1>
-  <p>In today's digital age, online hospital management systems offer significant benefits for both healthcare providers and patients. Here's a glimpse into their importance:</p>
-  <h2>Enhanced Efficiency</h2>
-  <ul>
-    <li>Streamlined appointment scheduling and booking.</li>
-    <li>Improved patient record management and accessibility.</li>
-    <li>Automated tasks and reduced administrative burden.</li>
-  </ul>
-  <h2>Improved Patient Experience</h2>
-  <ul>
-    <li>Convenient online appointment booking 24/7.</li>
-    <li>Secure access to medical records and test results.</li>
-    <li>Online communication with healthcare providers.</li>
-  </ul>
-  <h2>Increased Patient Engagement</h2>
-  <p>Online systems empower patients to take a more active role in their health management.</p>
-  <h2>Overall Benefits</h2>
-  <ul>
-    <li>Reduced waiting times and improved patient flow.</li>
-    <li>Enhanced communication and collaboration within the hospital.</li>
-    <li>Cost savings and better resource allocation.</li>
-  </ul>
-  <p>By implementing an online hospital management system, institutions can significantly improve their efficiency, patient experience, and overall healthcare delivery.</p>
-</body>
-</html>
-</main>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;">
+                <div>
+                    <h3>Enhanced Efficiency</h3>
+                    <ul>
+                        <li>Streamlined appointment scheduling.</li>
+                        <li>Improved record management.</li>
+                        <li>Automated administrative tasks.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Patient Experience</h3>
+                    <ul>
+                        <li>24/7 online booking.</li>
+                        <li>Secure access to records.</li>
+                        <li>Direct provider communication.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
 
-
-</body>
-</html>
 {% endif %}
 
-
+</body>
+</html>
