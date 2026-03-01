@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">Doctor Details</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">
+										<span class="ti-home"></span>
+									</a>
+								</li>
+								<li class="breadcrumb-item">Doctors</li>
+								<li class="breadcrumb-item active">Doctor Details</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			<!-- Main Content -->
+            
+			<div class="container">
+
+                <div class="row">
+                    <!-- Widget Item -->
+                    <div class="col-md-12">
+                        <div class="widget-area-2 proclinic-box-shadow">
+                            <h3 class="widget-title">Doctor Details</h3>
+                            <div class="row no-mp">
+                                <div class="col-md-4">
+                                    <div class="card mb-4">
+                                        <img class="card-img-top" src="{% static 'images/doctor.jpg' %}" alt="Card image">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Dr koushik shetty</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                                bulk of the
+                                                card's
+                                                content.</p>
+                                            
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>Doctor id</strong></td>
+                                                    <td>{{ doctor_detail.d_id }}</td>
+                                                </tr>
+                                                <tr>											
+                                                    <td><strong>Adder</strong></td>
+                                                    <td>{{ doctor_detail.d_add }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Doctor name</strong></td>
+                                                    <td>{{ doctor_detail.doctor_Name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Age</strong></td>
+                                                    <td>{{ doctor_detail.age }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Specialization</strong></td>
+                                                    <td>{{ doctor_detail.specialization }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Experience</strong> </td>
+                                                    <td>{{ doctor_detail.experience }}</td>
+                                                </tr>
+                                                <tr>
+                                                
+                                                <tr>
+                                                    <td><strong>Phone</strong></td>
+                                                    <td>{{ doctor_detail.phone }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Email</strong></td>
+                                                    <td>{{ doctor_detail.email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Gender</strong></td>
+                                                    <td>{{ doctor_detail.gender }}</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td><strong>Doctor details</strong></td>
+                                                    <td>{{ doctor_detail.doctor_details }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- Generate PDF Button -->
+		<div class="text-right mb-4">
+			<button onclick="generatePDF()" class="btn btn-primary">Generate PDF</button>
+		</div>
+		<!-- /Generate PDF Button -->
+		<!-- PDF Generation Script -->
+<script>
+    function generatePDF() {
+        // Print the current page as PDF
+        window.print();
+    }
+</script>
+                                    </div>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </div>
+                    <!-- /Widget Item -->
+                    
+                </div>
+			</div>
+			<!-- /Main Content -->
+            
+
+
+{% endblock %}

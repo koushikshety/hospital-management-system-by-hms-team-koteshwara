@@ -1,0 +1,53 @@
+{% load static %}
+
+{%block title%}{%endblock%}
+
+{%block content%}
+
+
+<script src="https://kit.fontawesome.com/df28bf0094.js" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<!-- <center> -->
+<!-- <big> -->
+    <form id="ok" method="post" action="{%url 'signup_view' %}">
+        <center>
+        <h1>
+        <i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp; sign_up</h1></center>
+        <br>
+        <!-- {{form.errorlist}} -->
+        
+        {% csrf_token %}
+        {{form.as_p}}
+        <!-- <br>
+        <strong>Username</strong><br/>
+        {{form.username}}<br/>
+        <br>
+        <strong>Email</strong><br/>
+        {{form.email}}<br/>
+        <br>
+        <strong>Password</strong><br/>
+        {{form.password1}}<br/>
+        <br>
+        <strong>Conform Password</strong><br/>
+        {{form.password2}}<br/>
+        <br> -->
+        
+        <i class="fa-solid fa-megaphone"></i>
+        <button type="submit">Register</button>      <button><a href="http://127.0.0.1:8000/accounts/sign_up">Refresh</a></button>
+        
+        <strong id="col-text">
+            <br><br>
+                you are already a user! 
+            <button id="net"><a href="{% url 'login'%}">Login</a></button></strong>
+            <br>
+            <br>
+        </form>
+
+    <!-- </big> -->
+<!-- </center> -->
+
+
+
+{%endblock%}

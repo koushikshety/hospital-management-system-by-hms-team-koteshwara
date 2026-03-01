@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">Add Payment</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">
+										<span class="ti-home"></span>
+									</a>
+								</li>
+								<li class="breadcrumb-item">Payments</li>
+								<li class="breadcrumb-item active">Add Payment</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			<!-- Main Content -->
+			<div class="container">
+
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-12">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Update Payment</h3>
+							<main id="success-msg">
+								{% for msg in  messages %}
+								
+								{{msg}}
+								
+								{% endfor %}
+								</main>
+								<br><br>
+							<form method="post" action="{% url 'edit_payment' x.id %}">
+								{% csrf_token %}
+								<div class="form-row">
+									
+									<div class="form-group col-md-6">
+										<label for="patient-id">Patient ID</label>
+										<input type="text" class="form-control" value="{{x.pp_id }}" placeholder="Patient ID" id="patient-id" name="pp_id" required="true">
+                                    </div>
+                                    <div class="form-group col-md-6">
+										<label for="patient-name">Patient Name</label>
+										<input type="text" class="form-control" value="{{x.patient_name }}" placeholder="Patient Name" id="patient-name" name="patient_name" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="department">Department</label>
+										<select class="form-control" value="{{x.department}}" id="department" name="department" required="true">
+											<option>Neuro</option>
+											<option>Ortho</option>
+											<option>General</option>
+										</select>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="doctor-name">Doctor Name</label>
+										<input type="text" value="{{x.doctor_name}}" placeholder="Doctor Name" class="form-control" id="doctor-name" name="doctor_name" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="adminssion-date">Admission Date</label>
+										<input type="date" value="{{x.admission_date}}" placeholder="Adminssion Date" class="form-control" id="adminssion-date" name="admission_date" required="true">
+                                    </div>	
+									<div class="form-group col-md-6">
+										<label for="phone">Phone</label>
+										<input type="number" placeholder="Phone" class="form-control" id="phone" name="phone" required="true">
+									</div>
+                                    <div class="form-group col-md-6">
+										<label for="discharge-date">Discharge Date</label>
+										<input type="date" value="{{x.discharge_date}}" placeholder="Discharge Date" class="form-control" id="discharge-date" name="discharge_date" required="true">
+                                    </div>	
+                                    <div class="form-group col-md-12">
+										<h4>Services</h4>										
+                                    </div>
+									<div class="form-group col-md-6">
+										<label for="service-name">Service Name</label>
+										<!-- <input type="text" placeholder="Service Name" class="form-control" id="service-name" name="service_name" required="true"> -->
+										<select class="form-control"  value="{{x.service_name }}" id="service-name" name="service_name" required="true">
+											<option>None</option>
+											<option>Emergency Care</option>
+											<option>Dianostic Service <small> (X-ray,Scan,Bloodtest,etc)</small></option>
+											<option>Inpatient Care</option> 
+											<option>Outpatient Care</option> 
+											<option>Surgery</option> 
+											<option>Laboratories</option> 
+											<option>Pharmacies</option> 
+
+										</select>
+                                    </div>	
+                                    <div class="form-group col-md-6">
+										<label for="treatment-cost">Cost of Treatment</label>
+										<input type="text" value="{{x.cost_of_treatment}}" placeholder="Cost of Treatment" class="form-control" id="treatment-cost" name="cost_of_treatment" required="true">
+                                    </div>
+                                    
+                                    <div class="form-group col-md-12">
+										<h4>Payment</h4>										
+                                    </div>
+                                    <div class="form-group col-md-3">
+										<label for="discount">Discount (%)</label>
+										<input type="text" value="{{x.discount }}" placeholder="Discount" class="form-control" id="discount" name="discount" required="true">
+                                    </div>	
+                                    <div class="form-group col-md-3">
+										<label for="advance-paid">Advance Paid</label>
+										<input type="text" value="{{x.advance_paid }}" placeholder="Advance Paid" class="form-control" id="advance-paid" name="advance_paid" required="true">
+                                    </div>
+									<div class="form-group col-md-6">
+										<label for="treatment-cost">Service Cost</label>
+										<input type="text" placeholder="Service Cost" class="form-control" id="service-cost" name="service_cost" required="true">
+                                    </div>
+                                    
+                                    <div class="form-group col-md-3">
+										<label for="payment-type">Payment Type</label>
+										<select class="form-control" value="{{x.Payment_type}}" id="payment-type" name="Payment_type" required="true">
+											<option>Check</option>
+											<option>Card</option>
+											<option>Cash</option>
+										</select>
+                                    </div>	
+                                    <div class="form-group col-md-3">
+										<label for="card-check">Card/Check No</label>
+										<input type="text" value="{{x.card_no }}" placeholder="Card/Check No" class="form-control" id="card-check" name="card_no" required="true">
+									</div>																	
+									<div class="form-group col-md-6">
+										<label >Status</label>
+										<select class="form-control" id="status" name="status" required="true">
+											<option>Active</option>
+											<option>Complete</option>
+											<option>Pending</option>
+											<option>Canceled</option>
+										</select>
+									</div>
+								</div>
+									<br>
+								<div class="form-group col-md-6 mb-3">
+									<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+								</div>
+							</form>
+							<!-- Alerts-->
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong>🛡️🛡️This method is fully encrypted!.. your information is 100% safe🛡️🛡️</strong> 
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="alert alert-info alert-dismissible fade show" role="alert">
+								<strong>🧑‍⚕️!  PLEACE check all your details before Submit! 😊</strong> 
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							
+							<!-- /Alerts-->
+						</div>
+					</div>
+					<!-- /Widget Item -->
+				</div>
+			</div>
+			<!-- /Main Content -->
+			{% endblock %}

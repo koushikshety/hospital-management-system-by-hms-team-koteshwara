@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">Add Room Allotment</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">
+										<span class="ti-home"></span>
+									</a>
+								</li>
+								<li class="breadcrumb-item">Room Allotments</li>
+								<li class="breadcrumb-item active">Add Room Allotment</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			<!-- Main Content -->
+			<div class="container">
+
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-12">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Add Room Allotment</h3>
+							<main id="success-msg">
+								{% for msg in  messages %}
+								
+								{{msg}}
+								
+								{% endfor %}
+								</main>
+								<br><br>
+							<form method="post" action="{% url 'add_room' %}">
+								{% csrf_token %}
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="Room_adder">Room_Adder</label>
+										<input type="text" readonly class="form-control-plaintext" id="r_add" name="r_add" value="{{user.username}}">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="room-number">Room Number</label>
+										<input type="text" class="form-control" placeholder="Room Number" id="room-number" name="room_number" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="room-type">Room Type</label>
+										<select class="form-control" id="room-type" name="room_type" required="true">
+											<option>ICU</option>
+											<option>General</option>
+											<option>AC Room</option> 
+										</select>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="patient-name">Patient Name</label>
+										<input type="text" placeholder="Patient Name" class="form-control" id="patient-name" name="patient_name" required="true">
+										<!-- <select class="form-control" id="patient-name" name="patient_name" required="true">
+											{% for y in y %}
+											<option>{{ y.patient_name }}</option>
+											{% endfor %}
+										</select> -->
+										
+									</div>
+									<div class="form-group col-md-6">
+										<label for="allot-date">Allotment Date</label>
+										<input type="date" placeholder="Allotment Date" class="form-control" id="allot-date" name="allotment_date" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="discharge-date">Discharge Date</label>
+										<input type="date" placeholder="Discharge Date" class="form-control" id="discharge-date" name="discharge_date" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="doctor-name">Doctor Name</label>
+										<input type="text" placeholder="Doctor Name" class="form-control" id="doctor-name" name="doctor_name" required="true">
+										
+									</div>
+									<div class="form-group col-md-6">
+										<label >Status</label>
+										<select class="form-control" id="status" name="status" required="true">
+											<option>Active</option>
+											<option>Complete</option>
+											<option>Pending</option>
+											<option>Canceled</option>
+										</select>
+									</div>
+									<div class="form-check col-md-12 mb-2">
+										<div class="text-left">
+											<div class="custom-control custom-checkbox">
+												
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-md-6 mb-3">
+										<button type="submit" class="btn btn-primary btn-lg">Submit</button> 
+										<!-- Alerts-->
+										<div class="alert alert-success alert-dismissible fade show" role="alert">
+											<strong>🛡️🛡️This method is fully encrypted!.. your information is 100% safe🛡️🛡️</strong> 
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										<div class="alert alert-info alert-dismissible fade show" role="alert">
+											<strong>🧑‍⚕️!  PLEACE check all your details before Submit! 😊</strong> 
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										
+										<!-- /Alerts-->
+									</div>
+								</div>
+							</form>
+						
+						</div>
+					</div>
+					<!-- /Widget Item -->
+				</div>
+			</div>
+			<!-- /Main Content -->
+
+
+
+{% endblock %}

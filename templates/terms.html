@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/kou_fav4.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - Hospital Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #50a8a0;
+            color: white;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #e8491d;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        #showcase {
+            min-height: 400px;
+            background: url('img/showcase.jpg') no-repeat 0 -400px;
+            text-align: center;
+            color: #ffffff;
+        }
+        #showcase h1 {
+            margin-top: 100px;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+        #showcase p {
+            font-size: 20px;
+        }
+        #boxes {
+            margin-top: 20px;
+        }
+        #boxes .box {
+            float: left;
+            width: 30%;
+            margin: 10px;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        #boxes .box img {
+            width: 90px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            color: #ffffff;
+            background-color: #e8491d;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Hospital</span> Management System</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="http://127.0.0.1:8000/">Home</a></li>
+                    <li><a href="http://127.0.0.1:8000/about">About</a></li>
+                    <li><a href="http://127.0.0.1:8000/base">Services</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Terms and Conditions</h1>
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="container">
+            <article id="main-col">
+                <h1 class="page-title">Terms and Conditions</h1>
+                <p>
+                    Welcome to our Hospital Management System. These terms and conditions outline the rules and regulations for the use of our Hospital Management System, located at our website.
+                </p>
+                <p>
+                    By accessing this website, we assume you accept these terms and conditions. Do not continue to use Hospital Management System if you do not agree to take all of the terms and conditions stated on this page.
+                </p>
+                <h2>License</h2>
+                <p>
+                    Unless otherwise stated, Hospital Management System and/or its licensors own the intellectual property rights for all material on Hospital Management System. All intellectual property rights are reserved. You may access this from Hospital Management System for your own personal use subjected to restrictions set in these terms and conditions.
+                </p>
+                <h2>Restrictions</h2>
+                <p>
+                    You are expressly and emphatically restricted from all of the following:
+                </p>
+                <ul>
+                    <li>Republishing material from Hospital Management System</li>
+                    <li>Selling, sublicensing and/or otherwise commercializing any Website material</li>
+                    <li>Redistributing or reproducing any part of Hospital Management System</li>
+                </ul>
+                <h2>Term</h2>
+                <p>
+                    This Agreement shall begin on the date hereof.
+                </p>
+                <h2>Contact Us</h2>
+                <p>
+                    If you have any questions about these Terms and Conditions, please contact us.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <p>Hospital Management System, Copyright &copy; 2022</p>
+    </footer>
+</body>
+</html>

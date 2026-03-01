@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<!-- /Item -->
+</div>
+<div class="widget-area-2 proclinic-box-shadow">
+    <!-- Item -->
+    <h3>Online Application Form For New Members</h3>
+    <div class="proclinic-widget mb-3">
+        <div id="accordion">
+            <main id="success-msg">
+                {% for msg in messages %}
+
+                {{ msg }}
+
+                {% endfor %}
+            </main>
+            <div class="card">
+                <div class="accordion-header" id="headingOne">
+                    <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Application For New Doctors
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <small>
+                            <h1>New Doctor Application</h1>
+
+                            <form method="post" action="{% url 'new_doctor_application' %}">
+								{% csrf_token %}
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="first-name">First Name</label>
+										<input type="text" class="form-control" placeholder="First-name" id="first-name" name="first_name" required="true">
+									</div>
+									
+									<div class="form-group col-md-6">
+										<label for="last-name">Last Name</label>
+										<input type="text" class="form-control" placeholder="Last name" id="last-name" name="last_name" required="true">
+									</div>
+									
+									<div class="form-group col-md-6"> 
+										<label for="age">Age</label>
+										<input type="number" placeholder="Age" class="form-control" id="age" name="age" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="phone">Phone</label>
+										<input type="number" placeholder="Phone" class="form-control" id="phone" name="phone" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="email">Email</label>
+										<input type="email" placeholder="email" class="form-control" id="Email" name="email" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="gender">Gender</label>
+										<select class="form-control" id="gender" name="gender" required="true">
+											<option>Male</option>
+											<option>Female</option>
+											<option>Other</option>
+										</select>
+									</div>
+                                    
+                                    <div class="form-group col-md-6">
+										<label for="file">Resume</label>
+										<input type="file" placeholder="file" class="form-control" id="file" name="file" required="true">
+									</div>
+                                    <div class="form-group col-md-6">
+										<label for="qualifications">Qualifications</label>
+										<input type="text" class="form-control" placeholder="Qualifications" id="qualifications" name="qualifications" required="true">
+									</div>
+									<div class="form-group col-md-12">
+										<label for="exampleFormControlTextarea1">Address*</label>
+										<textarea placeholder="Address" class="form-control" id="exampleFormControlTextarea1" rows="3" name="address" required="true"></textarea>
+									</div>
+									<div class="form-check col-md-12 mb-2">
+										<div class="text-left">
+											<div class="custom-control custom-checkbox">
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-md-6 mb-3">
+										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+									</div>
+								</div>
+							</form>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="accordion-header" id="headingTwo">
+                    <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Application For New Nurse/workers
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <small> <h1>Application Form</h1><br>
+                            <form method="POST" action="{% url 'application' %}">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                                <div class="form-group col-md-6">
+                                <label for="gender">Gender:</label>
+                                <select id="gender" name="gender" required>
+                                  <option value="male">Male</option>
+                                  <option value="female">Female</option>
+                                </select>
+                            </div>
+
+                                <div class="form-group col-md-6">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                              
+
+                                <div class="form-group col-md-6">
+                                <label for="phone">Phone:</label>
+                                <input type="text" id="phone" name="phone" required>
+                            </div>
+                              
+
+                                <div class="form-group col-md-12">
+                                <label for="address">Address:</label>
+                                <textarea id="address" name="address" required></textarea>
+                            </div>
+                              
+
+                                <div class="form-group col-md-12">
+                                <label for="qualifications">Qualifications:</label>
+                                <textarea id="qualifications" name="qualifications" required></textarea>
+                            </div>
+                              
+
+                                <div class="form-group col-md-12">
+                                <label for="experience">Experience:</label>
+                                <textarea id="experience" name="experience" required></textarea>
+                            </div>
+                              
+
+                                <div class="form-group col-md-6">
+                                <label for="date_of_birth">Date of Birth:</label>
+                                <input type="date" id="date_of_birth" name="date_of_birth" required>
+                            </div>
+                              
+
+                                <div class="form-group col-md-6 mb-3">
+                                <button type="submit">Submit</button>
+                            </div>
+
+
+                            </div>
+
+                              </form>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="accordion-header" id="headingThree">
+                    <h5 class="mb-0" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Contract Form
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                        <small>
+                            <h1>Contract Form</h1>
+                            <form action="{% url 'contract_form' %}" method="post">
+                                {% csrf_token %}
+                                <label for="companyBossName">Company Boss Name:</label>
+                                <input type="text" id="companyBossName" name="companyBossName" required><br><br>
+                                
+                                <label for="bossPhoto">Boss Photo:</label>
+                                <input type="file" id="bossPhoto" name="bossPhoto"><br><br>
+                                
+                                <label for="companyName">Company Name:</label>
+                                <input type="text" id="companyName" name="companyName" required><br><br>
+                                
+                                <label for="companyAddress">Company Address:</label>
+                                <input type="text" id="companyAddress" name="companyAddress" required><br><br>
+                                
+                                <label for="servicesOffered">Services Offered:</label>
+                                <input type="text" id="servicesOffered" name="servicesOffered" required><br><br>
+                                
+                                <label for="startDate">Start Date:</label>
+                                <input type="date" id="startDate" name="startDate" required><br><br>
+                                
+                                <label for="endDate">End Date:</label>
+                                <input type="date" id="endDate" name="endDate" required><br><br>
+                                
+                                <label for="contractAmount">Contract Amount:</label>
+                                <input type="text" id="contractAmount" name="contractAmount" required><br><br>
+                                
+                                <label for="contractPeriod">Contract Period:</label>
+                                <input type="text" id="contractPeriod" name="contractPeriod" required><br><br>
+                                
+                                <label for="ourProfit">Our Profit:</label>
+                                <input type="text" id="ourProfit" name="ourProfit" required><br><br>
+                                
+                                <label for="clientName">Client Name:</label>
+                                <input type="text" id="clientName" name="clientName" required><br><br>
+                                
+                                <label for="clientEmail">Client Email:</label>
+                                <input type="email" id="clientEmail" name="clientEmail" required><br><br>
+                                
+                                <label for="clientPhone">Client Phone:</label>
+                                <input type="tel" id="clientPhone" name="clientPhone" required><br><br>
+                                
+                                <!-- Add more necessary data fields here -->
+                                
+                                <input type="submit" value="Submit">
+                            </form>
+                        
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Item -->
+
+
+{% endblock %}

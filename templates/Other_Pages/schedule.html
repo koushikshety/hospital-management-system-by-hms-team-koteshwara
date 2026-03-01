@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Staff Schedule</title>
+    <style>
+        *{
+            text-decoration: none;
+            list-style: none;
+            /* text-align: center; */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th {
+            /* color:white; */
+            text-align: left;
+            padding: 8px;
+            /* background-color: black; */
+            border: 1px solid black;
+
+        }
+        td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        th {
+            background-color: #ddd;
+        }
+        .color-morning-clinic {
+            background-color: yellow;
+        }
+        .color-afternoon-clinic {
+            background-color: orange;
+        }
+        .color-night-clinic {
+            background-color: purple;
+            color: white;
+        }
+        .color-surgery {
+            background-color: green;
+            color: white;
+        }
+        .color-morning-rounds {
+            background-color: lightblue;
+        }
+        .color-evening-rounds {
+            background-color: pink;
+        }
+        .color-night-rounds {
+            background-color: darkblue;
+            color: white;
+        }
+        .color-admin-duties {
+            background-color: #ffcc99;
+        }
+        .color-day-shift {
+            background-color: #66b3ff;
+        }
+        .color-night-shift {
+            background-color: #993366;
+            color: white;
+        }
+        .color-weekend-leave {
+            background-color: #e6e6e6;
+        }
+        .color-on-leave {
+            background-color: gray;
+        }
+        .color-on-off {
+            background-color: rgb(213, 28, 28);
+        }
+        .name{
+            background-color: aqua;
+        }
+        #list1 li{
+            width:15%;
+            padding: 5px;
+            border-radius: 25px;
+            /* float:right */
+            display: inline-block;
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+            /* background-color:rgb(208, 23, 143) ; */
+            background-color: rgb(207, 36, 101);
+
+            color:white;
+        }
+        body{
+            /* background-color: rgb(207, 36, 101); */
+            background-color:rgb(208, 23, 143) ;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Hospital Schedule (As Per Week)</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+        <tr>
+            <td class="name">Dr. John Smith</td>
+            <td class="color-morning-clinic">Morning Clinic</td>
+            <td class="color-surgery">Surgery</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-evening-rounds">Evening Rounds</td>
+            <td class="color-admin-duties">Administrative Duties</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-on-off">Off</td>
+        </tr>
+        <tr>
+            <td class="name">Nurse Jane Doe</td>
+            <td class="color-day-shift">Day Shift</td>
+            <td class="color-day-shift">Day Shift</td>
+            <td class="color-night-shift">Night Shift</td>
+            <td class="color-day-shift">Day Shift</td>
+            <td class="color-day-shift">Day Shift</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-on-off">Off</td>
+        </tr>
+        <tr>
+            <td class="name">Dr. Jane Smith</td>
+            <td class="color-surgery">Surgery</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-morning-rounds">Morning Rounds</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-night-rounds">Night Rounds</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-evening-rounds">Evening Rounds</td>
+        </tr>
+        <tr>
+            <td class="name">Nurse John Doe</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-morning-clinic">Morning Clinic</td>
+            <td class="color-day-shift">Day Shift</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-night-shift">Night Shift</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-day-shift">Day Shift</td>
+        </tr>
+        <tr>
+            <td class="name">Dr. Sarah Johnson</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-afternoon-clinic">Afternoon Clinic</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-morning-clinic">Morning Clinic</td>
+            <td class="color-night-rounds">Night Rounds</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-morning-rounds">Morning Rounds</td>
+        </tr>
+        <tr>
+            <td class="name">Nurse Michael Williams</td>
+            <td class="color-night-shift">Night Shift</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-day-shift">Day Shift</td>
+            <td class="color-day-shift">Day Shift</td>
+            <td class="color-on-off">Off</td>
+            <td class="color-night-shift">Night Shift</td>
+        </tr>
+        
+    </table>
+    <div id="list1">
+        <ul><br>
+            <li class="color-morning-clinic">Morning Clinic</li>
+            <li class="color-afternoon-clinic">Afternoon Clinic</li>
+            <li class="color-night-clinic">Night Clinic</li>
+            <li class="color-surgery">Surgery</li>
+            <li class="color-morning-rounds">Morning Rounds</li>
+            <li class="color-evening-rounds">Evening Rounds</li>
+            <li class="color-night-rounds">Night Rounds</li>
+            <li class="color-admin-duties">Administrative Duties</li>
+            <li class="color-day-shift">Day Shift</li>
+            <li class="color-night-shift">Night Shift</li>
+            <li class="color-weekend-leave">Weekend Leave</li>
+            <li class="color-on-leave">On Leave</li>
+            <li class="color-on-off">Off</li>
+
+        </ul>
+    </div>
+</body>
+</html>

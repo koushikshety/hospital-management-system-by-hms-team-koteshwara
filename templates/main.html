@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- /Menu -->
+<!-- Breadcrumb -->
+<!-- Page Title -->
+<div class="container mt-0">
+    <div class="row breadcrumb-bar">
+        <div class="col-md-6">
+            <h3 class="block-title">All Statistics</h3>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="http://127.0.0.1:8000/">
+                        <span class="ti-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active"><a href="http://127.0.0.1:8000/main">Dashboard</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- /Page Title -->
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container home">
+    <div class="row">
+        <!-- Widget Item -->
+        <div class="col-md-4">
+            <div class="widget-area proclinic-box-shadow color-red">
+                <div class="widget-left">
+                    <span class="ti-user"></span>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Users</h4>
+                    <span class="numeric color-red">{{ user_count }}</span>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+        <!-- Widget Item -->
+        <div class="col-md-4">
+            <div class="widget-area proclinic-box-shadow color-silver">
+                <div class="widget-left">
+                    <span class="ti-user"></span>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Patients</h4>
+                    <span class="numeric color-silver">{{ pa_count }}</span>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+        <!-- Widget Item -->
+        <div class="col-md-4">
+            <div class="widget-area proclinic-box-shadow color-blue">
+                <div class="widget-left">
+                    <span class="ti-user"></span>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Doctors</h4>
+                    <span class="numeric color-blue">{{ doc_count }}</span>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+        <!-- Widget Item -->
+        <div class="col-md-4">
+            <div class="widget-area proclinic-box-shadow color-green">
+                <div class="widget-left">
+                    <span class="ti-bar-chart"></span>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Appointments</h4>
+                    <span class="numeric color-green">{{ Appoint_count }}</span>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+        <!-- Widget Item -->
+        <div class="col-md-4">
+            <div class="widget-area proclinic-box-shadow color-yellow">
+                <div class="widget-left">
+                    <span class="ti-money"></span>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Total Payments</h4>
+                    <span class="numeric color-yellow">{{ py_count }}</span>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+        <!-- Widget Item -->
+        <div class="col-md-4">
+            <div class="widget-area proclinic-box-shadow color-red">
+                <div class="widget-left">
+                    <span class="ti-user"></span>
+                </div>
+                <div class="widget-right">
+                    <h4 class="wiget-title">Rooms</h4>
+                    <span class="numeric color-red">{{ room_count }}</span>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+    </div>
+
+    <!-- Part 2 Code -->
+    <div class="row">
+        <!-- Widget Item -->
+        <div class="col-md-6">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">Patient, Doctor, and Payments Comparison</h3>
+                <canvas id="myChart0" width="500" height="200"></canvas>
+                <script>
+                    const ctx = document.getElementById('myChart0').getContext('2d');
+                    const labels = ['Patient', 'Appointment', 'Payment'];
+                    const data = {
+                        labels,
+                        datasets: [{
+                            label: 'Total',
+                            data: [{{ pa_count }}, {{ Appoint_count }}, {{ py_count }}],
+                            backgroundColor: ['#241d3f', '#18df18', '#ffd700'],
+                            borderColor: 'black',
+                            borderWidth: 1
+                        }]
+                    };
+                    const myChart0 = new Chart(ctx, {
+                        type: 'bar',
+                        data: data,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+
+        <!-- Widget Item -->
+        <div class="col-md-6">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">Patients Year by Year</h3>
+                <canvas id="myChart" width="200" height="200"></canvas>
+                <script>
+                    const ctx1 = document.getElementById('myChart').getContext('2d');
+                    const labels1 = ['Patients', 'Revenue', 'Doctors'];
+                    const data1 = {
+                        labels: labels1,
+                        datasets: [{
+                            label: 'Total',
+                            data: [{{ pa_count }}, {{ Appoint_count }}, {{ py_count }}],
+                            backgroundColor: ['#241d3f', '#18df18', '#ffd700'],
+                            borderColor: 'black',
+                            borderWidth: 1
+                        }]
+                    };
+                    const myChart = new Chart(ctx1, {
+                        type: 'pie',
+                        data: data1,
+                        options: {
+                            responsive: false,
+                            maintainAspectRatio: false
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+
+        <!-- Color Box -->
+        <div id="list">
+            <ul>
+                <li class="color-blacks">Patients</li>
+                <li class="color-aquas">Doctors</li>
+                <li class="color-greens">Appointments</li>
+                <li class="color-golds">Payments</li>
+                <li class="color-reds">Rooms</li>
+                <li class="color-pinks">Users</li>
+            </ul>
+        </div>
+        <!-- /Color Box -->
+    </div>
+    <!-- /Part 2 Code -->
+
+    <div class="row">
+        <!-- Widget Item -->
+        <div class="col-md-12">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">Appointments</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Token Number</th>
+                                <th>Patient Name</th>
+                                <th>Doctor</th>
+                                <th>Check-Up</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for appoint_detail in a %}
+                            <tr>
+                                <td>{{ appoint_detail.token_number }}</td>
+                                <td>{{ appoint_detail.p_name }}</td>
+                                <td>{{ appoint_detail.d_name }}</td>
+                                <td>{{ appoint_detail.problem }}</td>
+                                <td>{{ appoint_detail.appointment_date }}</td>
+                                <td>{{ appoint_detail.time_slot }}</td>
+                                <td>{{ appoint_detail.status }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+
+        <!-- Widget Item -->
+        <div class="col-md-12">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">Available Doctors</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Doctor</th>
+                                <th>Specialization</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for doctor in available_doctors %}
+                            <tr>
+                                <td>{{ doctor.doctor_Name }}</td>
+                                <td>{{ doctor.specialization }}</td>
+                                <td><span class="badge badge-success">Available</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+    </div>
+</div>
+<!-- /Main Content -->
+{% endblock %}

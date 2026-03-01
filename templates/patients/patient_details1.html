@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+				<div class="col-md-6">
+					<h3 class="block-title">Patient Details</h3>
+				</div>
+				<div class="col-md-6">
+					<ol class="breadcrumb">						
+						<li class="breadcrumb-item">
+							<a href="/">
+								<span class="ti-home"></span>
+							</a>
+                        </li>
+                        <li class="breadcrumb-item">Patients</li>
+						<li class="breadcrumb-item active">Patient Details</li>
+					</ol>
+				</div>
+			</div>
+			</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			{% for patient_detail in patient_detail %}
+			{% if user.username == patient_detail.p_add %}
+
+			<!-- Main Content -->
+			<div class="container">
+
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-12">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Patient Details</h3>
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+									
+									<tbody>
+										
+
+                                        <tr>
+											<td><strong>patient ID</strong></td>
+											<td>{{ patient_detail.p_id }}</td>
+										</tr>
+										<tr>											
+											<td><strong>Adder</strong></td>
+											<td>{{ patient_detail.p_add }}</td>
+										</tr>
+										<tr>											
+											<td><strong>Name</strong></td>
+											<td>{{ patient_detail.patient_name }}</td>
+										</tr>
+										<tr>
+											<td><strong>Date Of Birth</strong> </td>
+											<td>{{ patient_detail.date_of_birth }}</td>
+										</tr>
+                                        <tr>
+											<td><strong>Age</strong></td>
+											<td>{{ patient_detail.age }}</td>
+										</tr>
+										<tr>
+											<td><strong>Gender</strong></td>
+											<td>{{ patient_detail.gender }}</td>
+										</tr>
+										
+										<tr>
+											<td><strong>Phone </strong></td>
+											<td>{{ patient_detail.phone }}</td>
+										</tr>
+										<tr>
+											<td><strong>Email</strong></td>
+											<td>{{ patient_detail.email }}</td>
+                                        </tr>
+                                        <tr>
+											<td><strong>Address</strong></td>
+											<td>{{ patient_detail.address }}</td>
+										</tr>		
+																	
+									</tbody>
+								</table>
+							</div>
+							
+								<!-- Generate PDF Button -->
+		<div class="text-right mb-4">
+			
+		</div>
+		
+                            
+						</div>
+					</div>
+                    <!-- /Widget Item -->
+                    
+					{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			<!-- /Main Content -->
+			
+
+{% endblock %}

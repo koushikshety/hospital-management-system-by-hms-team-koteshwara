@@ -1,0 +1,46 @@
+*{
+    text-decoration: none;
+
+}
+
+body{
+    background-color: rgb(188, 193, 194);
+}
+
+button{
+    margin-left: 50px;
+}
+button:hover{
+    border-radius: 50%;
+}
+
+#h1{
+color: rgb(65, 32, 228);
+text-shadow: 4px 4px 2px rgb(113, 102, 102);
+}
+#ok3{
+    width: auto;
+    height: 100vh;
+    border:3px solid rgb(61, 30, 171);
+    background-image:url(images2/i1.png) ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: outset;
+    border: inset;
+    }
+    
+    #lm{
+    /* display: inline-block; */
+    list-style: none;
+    }
+    #tm{
+    /* color: white;  */
+    font-size: 18px; font-weight: bold; margin-right: 25px;
+    }
+    #tm:hover{
+    padding: 6px;
+    border-radius: 30px;
+    color:white;
+    background-color: rgb(36, 240, 36);
+    }

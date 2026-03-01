@@ -1,0 +1,42 @@
+#error-msg{
+    width: 40%;
+    
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(249, 247, 251);
+    background-color: red;
+    border-radius: 50px 0px 50px 0px;
+    text-align: center;
+}
+
+#success-msg{
+    width: 40%;
+    
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(249, 247, 251);
+    background-color: rgb(6, 138, 28);
+    border-radius: 50px 0px 50px 0px;
+    text-align: center;
+}
+
+#warning-msg{
+    width: 40%;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(249, 247, 251);
+    background-color: rgb(206, 200, 10);
+    
+    border-radius: 50px 0px 50px 0px;
+    text-align: center;
+}
+#info-msg{
+    width: 40%;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(249, 247, 251);
+    background-color: rgb(56, 157, 198);
+    
+    border-radius: 50px 0px 50px 0px;
+    text-align: center;
+}

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<div class="container mt-0">
+    <div class="row breadcrumb-bar">
+        <div class="col-md-6">
+            <h3 class="block-title">Doctors</h3>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/">
+                        <span class="ti-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">Doctors</li>
+                <li class="breadcrumb-item active">All Doctors</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- /Page Title -->
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <!-- Widget Item -->
+        <div class="col-md-12">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">Doctors List</h3>
+                <main id="success-msg">
+                    {% for msg in messages %}
+                        {{ msg }}
+                    {% endfor %}
+                </main>
+                <br><br>
+                <div class="table-responsive mb-3">
+                    <input type="text" id="search_input" placeholder="Search...">
+                    <button onclick="search()" class="btn btn-primary">Search</button>
+                    <table id="tableId" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Doctor ID</th>
+                                <th>Doctor_Adder</th>
+                                <th>Doctor Name</th>
+                                <th>Gender</th>
+                                <th>Specialization</th>
+                                
+                                <th>Status</th>
+                                <th><strong>View</strong></th>
+                                <th><strong>Delete</strong></th>
+                                <th><strong>Edit</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody id="data">
+                            {% for doctor_detail in doctor_detail %}
+                                <tr>
+                                    <td>{{ doctor_detail.d_id }}</td>
+                                    <td>{{ doctor_detail.d_add }}</td>
+                                    <td>{{ doctor_detail.doctor_Name }}</td>
+                                    <td>{{ doctor_detail.gender }}</td>
+                                    <td>{{ doctor_detail.specialization }}</td>
+                                    
+                                    <td>
+                                        <span class="badge badge-success">{{ doctor_detail.status }}</span>
+                                    </td>
+                                    {% if user.username == doctor_detail.d_add %}
+                                        <td><a class="btn btn-info animate-on-hover" href="{% url 'd_about' id=doctor_detail.id %}"><span class="ti-eye"> View</span></a></td>
+                                        <td><a class="btn btn-danger animate-on-hover" href="{% url 'delete02' id=doctor_detail.id %}"><span class="ti-trash"> Delete</span></a></td>
+                                        <td><a class="btn btn-success mb-2 animate-on-hover" href="{% url 'edit_doctor' id=doctor_detail.id %}"><span class="ti-pencil-alt"> Edit</span></a></td>
+                                    {% else %}
+                                        <td>❌</td>
+                                        <td>❌</td>
+                                        <td>❌</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /Widget Item -->
+    </div>
+</div>
+<!-- /Main Content -->
+
+<script>
+    function search() {
+        const searchTerm = document.getElementById("search_input").value.toLowerCase();
+        const tableRows = document.querySelectorAll("#data tr");
+
+        tableRows.forEach(row => {
+            const textContent = row.textContent.toLowerCase();
+            if (textContent.includes(searchTerm)) {
+                row.style.display = ""; // Show matching rows
+            } else {
+                row.style.display = "none"; // Hide non-matching rows
+            }
+        });
+    }
+</script>
+{% endblock %}

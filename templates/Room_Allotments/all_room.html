@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">Allotments</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">
+										<span class="ti-home"></span>
+									</a>
+								</li>
+								<li class="breadcrumb-item">Allotments</li>
+								<li class="breadcrumb-item active">All Allotments</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			<!-- Main Content -->
+			<div class="container">
+
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-12">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Allotments List</h3>
+							<main id="success-msg">
+								{% for msg in  messages %}
+								
+								{{msg}}
+								
+								{% endfor %}
+								</main>
+								<br><br>
+							<div class="table-responsive mb-3">
+								<table id="tableId" class="table table-bordered table-striped">
+									<thead>
+										<tr>
+										
+											<th>Room</th>
+											<th>Room_Adder</th>
+											<!-- <th>Room Type</th> -->
+											<th>Patient Name</th>
+											<th>Allotment Date</th>
+                                            <!-- <th>Discharge Date</th> -->
+                                            <th>Doctor Name</th>
+											<th>Status</th>
+											
+											<th><strong>Edit</strong></th>
+											<th><strong>Delete</strong></th>
+											
+										</tr>
+									</thead>
+                                    {% for room_detail in room_detail %}
+                                    <tbody id="data">
+                                        <tr>
+                                            
+                                            <td>{{ room_detail.room_number }}</td>
+											<td>{{ room_detail.r_add }}</td>
+                                            <!-- <td>{{ room_detail.room_type }}</td> -->
+                                            <td>{{ room_detail.patient_name}}</td>
+                                            <td>{{ room_detail.allotment_date }}</td>
+                                            <!-- <td>{{ room_detail.discharge_date }}</td> -->
+                                            <td>{{ room_detail.doctor_name }}</td>
+                                            <td><span class="badge badge-success">{{ room_detail.status }}</span></td>
+											{% if user.username == room_detail.r_add %}
+
+											<td><a  class="btn btn-success mb-2 animate-on-hover" href="{% url 'edit_room' id=room_detail.id %}"><span class="ti-pencil-alt"> Edit</span></a></td>
+											<td><a  class="btn btn-danger animate-on-hover" href="{% url 'deleteroom' id=room_detail.id %}"><span class="ti-trash"> Delete</span></a></td>
+                                        </tr>
+										
+										{% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                
+								<script>
+									function search() {
+									const searchTerm = document.getElementById("search_input").value.toLowerCase();
+									const tableBody = document.getElementById("data");
+									const tableRows = tableBody.querySelectorAll("tr");
+									
+									// Clear previous results (optional)
+									tableBody.innerHTML = ""; 
+																		  // You can uncomment this line if you want to clear previous results before displaying new ones.
+									
+									for (const row of tableRows) {
+									const textContent = row.textContent.toLowerCase();
+									if (textContent.includes(searchTerm)) {
+									tableBody.appendChild(row.cloneNode(true)); // Append matching rows
+									}
+									}
+									}
+									</script>
+						</div>
+					</div>
+					<!-- /Widget Item -->
+				</div>
+			</div>
+			<!-- /Main Content -->
+
+
+{% endblock %}

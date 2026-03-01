@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/kou_fav4.png' %}">
+    <title>ADMINISTRATERS PROFILE</title>
+    <h1>ADMINISTRATERS PROFILE</h1>
+    <br>
+    <style>
+    body { 
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+
+
+        .profile {
+            
+            width: 300px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .profile img {
+            width: 40%;
+            height: auto;
+        }
+        .profile h2 {
+            margin-top: 5px;
+        }
+        .profile p {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body background="{% static 'images\koubg.gif' %}">
+    <div>
+    <div class="profile">
+        <img src="{% static 'images/user2.png' %}" alt="Person 1">
+        <h2>KARTHIK</h2>
+        <p> student from S.K.V.M.S GOVERMENT FIRST GRADE COLLEGE KOTESHWARA KUNDAPURA<br>
+            IIIBSc(MCs) student <br>
+        </p>
+    </div>
+
+    <div class="profile">
+        <img src="{% static 'images/user3.png' %}" alt="Person 1">
+        <h2>MANJUSRI</h2>
+        <p> student from S.K.V.M.S GOVERMENT FIRST GRADE COLLEGE KOTESHWARA KUNDAPURA<br>
+            IIIBSc(MCs) student <br>
+            
+        </p>
+    </div>
+
+    <div class="profile">
+        <img src="{% static 'images/user3.png' %}" alt="Person 1">
+        <h2>MEGHA</h2>
+        <p> student from S.K.V.M.S GOVERMENT FIRST GRADE COLLEGE KOTESHWARA KUNDAPURA<br>
+            IIIBSc(MCs) student <br>
+        </p>
+    </div>
+
+
+    <div class="profile">
+        <img src="{% static 'images/user1.png' %}" alt="Person 1">
+        <h2>KOUSHIK</h2>
+        <p> student from S.K.V.M.S GOVERMENT FIRST GRADE COLLEGE KOTESHWARA KUNDAPURA<br>
+            IIIBSc(MCs) student <br>
+            
+            
+        </p>
+    </div>
+</div>
+</body>
+</html>

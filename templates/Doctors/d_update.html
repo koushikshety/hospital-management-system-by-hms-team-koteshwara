@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb -->
+<!-- Page Title -->
+<div class="container mt-0">
+    <div class="row breadcrumb-bar">
+        <div class="col-md-6">
+            <h3 class="block-title">EDIT Patient</h3>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/">
+                        <span class="ti-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">Patients</li>
+                <li class="breadcrumb-item active">EDIT Patient</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- /Page Title -->
+
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container">
+
+    <div class="row">
+        <!-- Widget Item -->
+        <div class="col-md-12">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">Update Doctor</h3>
+                <main id="success-msg">
+                    {% for msg in messages %}
+                    {{msg}}
+                    {% endfor %}
+                </main>
+                <br><br>
+                <form method="post" action="{% url 'edit_doctor' doctor.id %}">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Doctor-id">Doctor ID</label>
+                            <input type="text" value="{{doctor.d_id}}" class="form-control" placeholder="Doctor ID" id="d_id" name="d_id" required="true">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Doctor-name">Doctor Name</label>
+                            <input type="text" value="{{doctor.doctor_Name}}" class="form-control" placeholder="Doctor Name" id="Doctor-name" name="doctor_name" required="true">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="specialization">Specialization</label>
+                            <input type="text" value="{{doctor.specialization}}" placeholder="Specialization" class="form-control" id="specialization" name="specialization" required="true">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="experience">Experience</label>
+                            <input type="text" value="{{doctor.experience}}" placeholder="Experience" class="form-control" id="experience" name="experience" required="true">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="age">Age</label>
+                            <input type="text" value="{{doctor.age}}" placeholder="Age" class="form-control" id="age" name="age" required="true">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phone">Phone</label>
+                            <input type="text" value="{{doctor.phone}}" placeholder="Phone" class="form-control" id="phone" name="phone" required="true">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" value="{{doctor.email}}" placeholder="Email" class="form-control" id="Email" name="email" required="true">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="gender">Gender</label>
+                            <select class="form-control" value="{{doctor.gender}}" id="gender" name="gender" required="true">
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="gender">Status</label>
+                            <select class="form-control" id="status" name="status" required="true">
+                                <option>Available</option>
+                                <option>On Leave</option>
+                                <option>Not Available</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="about-doctor">Doctor Details</label>
+                            <textarea placeholder="Doctor Details" value="{{doctor.doctor_details}}" class="form-control" id="about-doctor" rows="3" name="doctor_details" required="true"></textarea>
+                        </div>
+                        <div class="form-check col-md-12 mb-2">
+                            <div class="text-left">
+                                <div class="custom-control custom-checkbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Alerts-->
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>🧑‍⚕️! PLEASE check all your details before Submit! 😊</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <!-- /Alerts-->
+            </div>
+        </div>
+        <!-- /Widget Item -->
+    </div>
+</div>
+<!-- /Main Content -->
+{% endblock %}

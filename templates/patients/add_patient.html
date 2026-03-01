@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">Add Patient</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">
+										<span class="ti-home"></span>
+									</a>
+								</li>
+								<li class="breadcrumb-item">Patients</li>
+								<li class="breadcrumb-item active">Add Patient</li>
+							</ol>
+								
+						</div>
+					</div>
+				</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			<!-- Main Content -->
+			<div class="container">
+
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-12">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Add Patient</h3>
+							<main id="success-msg">
+								{% for msg in  messages %}
+								
+								{{msg}}
+								
+								{% endfor %}
+								</main>
+								
+							<form method="post" action="{% url 'add_patient' %}">
+								{% csrf_token %}
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="patient_adder">Patient_Adder</label>
+										<!-- <input type="text" value="{{user.username}}" class="form-control"  id="p_add" name="p_add" required="true"> -->
+										<input type="text" readonly class="form-control-plaintext" id="p_add" name="p_add" value="{{user.username}}">
+									</div>
+									
+									<input type="hidden" name="p_id" > 
+									
+									
+									<div class="form-group col-md-6">
+										<label for="patient-name">Patient Name</label>
+										<input type="text" class="form-control" placeholder="Patient name" id="patient-name" name="patient_name" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="dob">Date Of Birth</label>
+										<input type="date" placeholder="Date of Birth" class="form-control" id="dob" name="dob" required="true">
+									</div>
+									<div class="form-group col-md-6"> 
+										<label for="age">Age</label>
+										<input type="number" placeholder="Age" class="form-control" id="age" name="age" required="true">
+									</div>
+									<div class="form-group col-md-6"> 
+										<label for="addmission_date">Addmission Date</label><br>
+										<input type="date" id="datefield" name="date" required>
+										<script>
+											window.onload = function() {
+											var today = new Date();
+											var dd = String(today.getDate()).padStart(2, '0');
+											  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+											var yyyy = today.getFullYear();
+										
+											today = yyyy + '-' + mm + '-' + dd;
+											document.getElementById("datefield").value = today;
+											}
+										</script>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="phone">Phone</label>
+										<input type="number" placeholder="Phone" class="form-control" id="phone" name="phone" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="email">Email</label>
+										<input type="email" placeholder="email" class="form-control" id="Email" name="email" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="gender">Gender</label>
+										<select class="form-control" id="gender" name="gender" required="true">
+											<option>Male</option>
+											<option>Female</option>
+											<option>Other</option>
+										</select>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="gender">Status</label>
+										<select class="form-control" id="status" name="status" required="true">
+											<option>Normal</option>
+											<option>Danger</option>
+											<option>Pending</option>
+											<option>Complete</option>
+										</select>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="exampleFormControlTextarea1">Address*</label>
+										<textarea placeholder="Address" class="form-control" id="exampleFormControlTextarea1" rows="3" name="address" required="true"></textarea>
+									</div>
+									<div class="form-check col-md-12 mb-2">
+										<div class="text-left">
+											<div class="custom-control custom-checkbox">
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-md-6 mb-3">
+										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+									</div>
+								</div>
+							</form>
+							<!-- Alerts-->
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong>🛡️🔒🔑This method is fully encrypted!.. your information is 100% safe🔑🔒🛡️</strong> 
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="alert alert-info alert-dismissible fade show" role="alert">
+								<strong>🧑‍⚕️!  PLEACE check all your details before Submit! 😊</strong> 
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							
+							
+							<!-- /Alerts-->
+						</div>
+					</div>
+					<!-- /Widget Item -->
+				</div>
+			</div>
+			<!-- /Main Content -->
+{% endblock %}

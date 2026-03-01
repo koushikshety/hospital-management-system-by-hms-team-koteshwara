@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/kou_fav4.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page </title>
+    {% load static %}
+</head>
+<body>
+    <div id="log">
+
+        
+        <script src="https://kit.fontawesome.com/df28bf0094.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <form method="post" action="{%url 'login' %}">
+        <div id="form-middel">
+
+            <h1><i class="fa-solid fa-circle-user"> </i>&nbsp;&nbsp;login</h1>
+            <br>
+            {% csrf_token %}
+            {{form.as_p}} 
+            <button type="submit">Login</button>
+            <br>
+            <br>
+            not a member? <button id="net"><a href="{% url 'signup_view'%}">sign up</a></button> here
+                <br>
+                <br>
+                
+                <a id="fb" href="https://www.facebook.com">
+                    <i class="fa-brands fa-facebook"></i></a>
+                    <a id="yt" href="https://www.youtube.com">
+                        <i class="fa-brands fa-youtube"></i></a>
+                        <a id="wa" href="https://web.whatsapp.com/">
+                            <i class="fa-brands fa-whatsapp"></i></a>
+                            
+                        </div>
+                </div>
+</body>
+</html>

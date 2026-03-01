@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">Payments</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">
+										<span class="ti-home"></span>
+									</a>
+								</li>
+								<li class="breadcrumb-item">Payments</li>
+								<li class="breadcrumb-item active">All Payments</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			<!-- Main Content -->
+			<div class="container">
+
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-12">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Payments List</h3>
+							<main id="success-msg">
+								{% for msg in  messages %}
+								
+								{{msg}}
+								
+								{% endfor %}
+								</main>
+								<br><br>
+							<div class="table-responsive mb-3">
+								<table id="tableId" class="table table-bordered table-striped">
+									<thead>
+										
+										<tr>
+											
+											<th>Patient_ID</th>
+											<th>Payment_Adder</th>
+                                            <th>Patient_Name</th>
+											<!-- <th>Department</th> -->
+											<th>Doctor_Name</th>
+											<!-- <th>Admission_Date</th> -->
+											<th>Discharge_Date</th>
+											<!-- <th>Service_Name </th>
+											<th>Cost_Of_Treatment</th>
+											<th>Discount<small>(%)</small></th>
+											<th>Advance_Paid</th>
+											<th>Payment_Type</th>
+                                            <th>Card_No.</th> -->
+											<th>Status</th>
+											
+											<th><strong>View</strong></th>
+											<th><strong>Delete</strong></th>
+											<th><strong>Edit</strong></th>
+											
+										</tr>
+									</thead>
+                                    {% for payment_detail in payment_detail %}
+                                    <tbody id="data">
+                                        <tr>
+                                        
+                                            <td>{{ payment_detail.pp_id }}</td>
+											<td>{{ payment_detail.py_add }}</td>
+                                            <td>{{ payment_detail.patient_name }}</td>
+                                            <!-- <td>{{ payment_detail.department }}</td> -->
+                                            <td>{{ payment_detail.doctor_name }}</td>
+                                            <!-- <td>{{ payment_detail.admission_date }}</td> -->
+                                            <td>{{ payment_detail.discharge_date }}</td>
+                                            <!-- <td>{{ payment_detail.service_name }}</td> -->
+                                            <!-- <td>{{ payment_detail.cost_of_treatment }}</td> -->
+                                            <!-- <td>{{ payment_detail.discount }}</td> -->
+                                            <!-- <td>{{ payment_detail.advance_paid }}</td> -->
+                                            <!-- <td>{{ payment_detail.Payment_type }}</td> -->
+                                            <!-- <td>{{ payment_detail.card_no }}</td> -->
+                                            
+                                            <td>
+                                                <span class="badge badge-success">{{ payment_detail.status }}</span>
+                                            </td>
+											{% if user.username == payment_detail.py_add %}
+
+											<td><a  class="btn btn-primary animate-on-hover" href="{% url 'invoice2' id=payment_detail.id %}"><span class="ti-eye"> Views</span></a></td>
+											<td><a  class="btn btn-danger animate-on-hover" href="{% url 'deletepay' id=payment_detail.id %}"><span class="ti-trash"> Delete</span></a></td>
+											<td><a  class="btn btn-success mb-2 animate-on-hover" href="{% url 'edit_payment' id=payment_detail.id %}"><span class="ti-pencil-alt"> Edit</span></a></td>
+                                        </tr>
+										{% else %}
+											<td>❌</td>
+											<td>❌</td>
+											<td>❌</td>
+											{% endif %}
+                                        
+                                    </tbody>
+                                    {% endfor %}
+                                </table>
+                                
+								<script>
+									function search() {
+									const searchTerm = document.getElementById("search_input").value.toLowerCase();
+									const tableBody = document.getElementById("data");
+									const tableRows = tableBody.querySelectorAll("tr");
+									
+									// Clear previous results (optional)
+									tableBody.innerHTML = ""; 
+																		  // You can uncomment this line if you want to clear previous results before displaying new ones.
+									
+									for (const row of tableRows) {
+									const textContent = row.textContent.toLowerCase();
+									if (textContent.includes(searchTerm)) {
+									tableBody.appendChild(row.cloneNode(true)); // Append matching rows
+									}
+									}
+									}
+									</script>
+							</div>
+						</div>
+					</div>
+					<!-- /Widget Item -->
+				</div>
+			</div>
+			<!-- /Main Content -->
+            {% endblock %}

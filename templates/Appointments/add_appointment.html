@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">Add Appointment</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">
+										<span class="ti-home"></span>
+									</a>
+								</li>
+								<li class="breadcrumb-item">Appointments</li>
+								<li class="breadcrumb-item active">Add Appointment</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			<!-- Main Content -->
+			<div class="container">
+
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-12">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Add Appointment</h3>
+
+
+							<main id="success-msg">
+								{% for msg in  messages %}
+								
+								{{msg}}
+								
+								{% endfor %}
+							</main>
+								<br><br>
+
+
+							<form method="post" action="{% url 'add_appointment' %}">
+								{% csrf_token %}
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="Appointment_adder">Appointment_Adder</label>
+										<input type="text" readonly class="form-control-plaintext" id="a_add" name="a_add" value="{{user.username}}">
+									</div>
+									
+									<input type="hidden" name="p_id" value="{{new_patiennt_id}}"> 
+									
+									<div class="form-group col-md-6">
+										<label for="patient-name">Patient Name</label>
+										<input type="text" class="form-control" placeholder="Patient Name" id="patient-name" name="p_name" required="true">
+										<!-- <select class="form-control" id="doctor-name" name="d_name" required="true">
+											{% for names in y %}
+											<option>{{ names }}</option>
+											{% endfor %}
+										</select> -->
+									</div>
+
+								
+									<div class="form-group col-md-6">
+										<label for="patient-id">Patient ID</label>
+										<input type="text" class="form-control" placeholder="Patient ID" id="patient-id" name="pa_id" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="department">Department</label>
+										<select class="form-control" id="department" name="department" required="true">
+											<option>Neuro</option>
+											<option>Ortho</option>
+											<option>General</option>
+										</select>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="doctor-name">Doctor Name</label>
+										<select class="form-control" id="doctor-name" name="d_name" required="true">
+											{% for name in x %}
+											<option>{{ name }}</option>
+											{% endfor %}
+										</select>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="appointment-date">Appointment Date</label>
+										<input type="date" placeholder="Appointment Date" class="form-control" id="appointment-date" name="appointment_date" required="true">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="time-slot">Time Slot</label>
+										<select class="form-control" id="time-slot" name="time_slot" required="true">
+											<option>10AM-11AM</option>
+											<option>11AM-12pm</option>
+											<option>12PM-01PM</option>
+											<option>2PM-3PM</option>
+											<option>3PM-4PM</option>
+											<option>4PM-5PM</option>
+											<option>6PM-7PM</option>
+											<option>7PM-8PM</option>
+											<option>8PM-9PM</option>
+										</select>
+									</div>
+									
+									
+									
+									
+									<div class="form-group col-md-6">
+										<label >Status</label>
+										<select class="form-control" id="status" name="status" required="true">
+											<option>Active</option>
+											<option>Complete</option>
+											<option>Pending</option>
+											<option>Canceled</option>
+										</select>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="problem">Problem</label>
+										<textarea placeholder="Problem" class="form-control" id="problem" rows="3" name="problem" required="true"></textarea>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="token-number">Token Number</label>
+										<input type="text" placeholder="Token Number" class="form-control" id="token-number" name="token_number" required="true">
+									
+										<script>
+										const tokenInput = document.getElementById('token-number');
+										const createTokenButton = document.createElement('button');
+										createTokenButton.textContent = 'Create Token';
+										  createTokenButton.classList.add('btn', 'btn-secondary', 'btn-sm'); // Style the button
+									
+										function generateRandomToken() {
+											return Math.floor(Math.random() * 100).toString().padStart(2, '0'); // Pad with zeros if less than 4 digits
+										}
+									
+										createTokenButton.addEventListener('click', () => {
+											const randomToken = generateRandomToken();
+											tokenInput.value = randomToken;
+										});
+									
+										tokenInput.parentNode.insertBefore(createTokenButton, tokenInput.nextSibling);
+										</script>
+									</div>							
+									<div class="form-check col-md-12 mb-2">
+										<div class="text-left">
+											<div class="custom-control custom-checkbox">
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-md-6 mb-3">
+										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+									</div>
+								</div>
+							</form>
+							<!-- Alerts-->
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+								<strong>🛡️🛡️This method is fully encrypted!.. your information is 100% safe🛡️🛡️</strong> 
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="alert alert-info alert-dismissible fade show" role="alert">
+								<strong>🧑‍⚕️!  PLEACE check all your details before Submit! 😊</strong> 
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							
+							<!-- /Alerts-->
+						</div>
+					</div>
+					<!-- /Widget Item -->
+				</div>
+			</div>
+			<!-- /Main Content -->
+
+{% endblock %}

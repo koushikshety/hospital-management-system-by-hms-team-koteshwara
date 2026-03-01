@@ -1,0 +1,171 @@
+{% load static %}
+
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'images/kou_fav4.png' %}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HMS team</title>
+<link rel="stylesheet" href="{% static 'css/index1.css' %}">
+<link rel="stylesheet" href="{% static 'css/messages.css' %}">
+
+
+
+</head>
+<body  id="ok3">
+  <!-- <style>
+  </style> -->
+
+  <div class="bg">
+
+    <h1 id="h1"><strong>HELLO {{user.username}},WELCOME TO OUR HOSPITAL MANAGEMENT SYSTEM</strong></h1>
+<br>
+
+    
+<nav class="navbar1">
+  <br>
+<ul id="um">
+  
+  
+  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/main">DASHBOARD</a></li>
+  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/about">ABOUT</a></li>
+  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/terms">TERMS AND CONDITION</a></li>
+  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/profile">ADMINISTRATERS</a></li>
+  <li id="lm"><a id="tm" href="http://127.0.0.1:8000/admin">ADMIN'S LOGIN</a></li>
+
+
+</ul>
+<br>
+<!-- <style>
+
+</style> -->
+</nav>
+<br>
+
+<main id="success-msg">
+  {% for msg in  messages %}
+  
+  {{msg}}
+  
+  {% endfor %}
+
+</main>
+<br>
+
+
+<form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <button id="ok1" type="submit" class="btn btn-outline-danger"><span class="ti-new-window"></span> LOGOUT</button>
+
+</form>
+</div>
+<style>
+  #ok1{
+    border-radius: 50%;
+    padding: 10px;
+    background-color: red;
+    color: white;
+  }
+  *{
+    text-decoration: none;
+    list-style-type: none;
+  }
+  h1{
+    text-align: center;
+  }
+  /* h1:hover{
+    
+    background-color: white;
+  } */
+
+  /* .navbar1{
+    background-color: rgb(244, 12, 12);
+  } */
+
+</style>
+
+</body>
+</html>
+
+{% else %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'images/kou_fav4.png' %}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HMS TEAM</title>
+
+</head>
+<body >
+  <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index2.css' %}">
+  
+<h1>WELCOME TO HOSPITAL MANAGEMENT SYSTEM WEBSITE </h1>
+
+<nav class="navbar">
+<ul id="ok2">
+	<li id="ok"><a id="ok1" href="http://127.0.0.1:8000/about">ABOUT</a></li>
+	<li id="ok"><a id="ok1" href="http://127.0.0.1:8000/accounts/login/">LOGIN</a></li>
+	<li id="ok"><a id="ok1" href="http://127.0.0.1:8000/accounts/sign_up">SIGN UP</a></li>
+	<li id="ok"><a id="ok1" href="http://127.0.0.1:8000/admin">ADMIN</a></li>
+</ul>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<main id="error-msg">
+  {% for msg1 in  messages %}
+  {{msg1}}
+  {% endfor %}
+
+</main>
+<br>
+
+
+<main>
+	<title>Importance of Online Hospital Management Systems</title>
+</head>
+<body>
+  <h1>Why Online Hospital Management Systems Matter</h1>
+  <p>In today's digital age, online hospital management systems offer significant benefits for both healthcare providers and patients. Here's a glimpse into their importance:</p>
+  <h2>Enhanced Efficiency</h2>
+  <ul>
+    <li>Streamlined appointment scheduling and booking.</li>
+    <li>Improved patient record management and accessibility.</li>
+    <li>Automated tasks and reduced administrative burden.</li>
+  </ul>
+  <h2>Improved Patient Experience</h2>
+  <ul>
+    <li>Convenient online appointment booking 24/7.</li>
+    <li>Secure access to medical records and test results.</li>
+    <li>Online communication with healthcare providers.</li>
+  </ul>
+  <h2>Increased Patient Engagement</h2>
+  <p>Online systems empower patients to take a more active role in their health management.</p>
+  <h2>Overall Benefits</h2>
+  <ul>
+    <li>Reduced waiting times and improved patient flow.</li>
+    <li>Enhanced communication and collaboration within the hospital.</li>
+    <li>Cost savings and better resource allocation.</li>
+  </ul>
+  <p>By implementing an online hospital management system, institutions can significantly improve their efficiency, patient experience, and overall healthcare delivery.</p>
+</body>
+</html>
+</main>
+
+
+</body>
+</html>
+{% endif %}
+
+

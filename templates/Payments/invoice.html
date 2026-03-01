@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">Invoice</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="/">
+										<span class="ti-home"></span>
+									</a>
+								</li>
+								<li class="breadcrumb-item">Other Pages</li>
+								<li class="breadcrumb-item active">Invoice</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			<!-- /Breadcrumb -->
+			
+
+			<!-- Main Content -->
+			<div class="container">
+				<div class="row">
+						<div class="col-md-12">
+							<div class="widget-area-2 proclinic-box-shadow pb-3">
+								<!-- Invoice Head -->
+								<div class="row ">
+									<div class="col-sm-6 mb-5">
+										<h5 class="proclinic-text-color">Hospital Name</h5>
+										<span >HOSPITAL MANAGEMENT SYSTEM</span>
+										<br>
+		
+										<br>
+										<span>KOTESHWARA</span>
+										<br>
+										<span>KUNDAPURA, UDUPI(DIS), KARNATAKA</span>
+										<br>
+										<span class="pr-2">PHONE: 9876543210</span>
+										<span>EMAIL: www.hms@email.com</span>
+									</div>
+									<div class="col-sm-6 text-md-right mb-5">
+										<h3>INVOICE</h3>
+										<br>
+										<br>
+										<span>Id : {{ payment_detail.pp_id }}</span>
+										<br>
+										<span>Admission Date : {{ payment_detail.admission_date }}</span>
+										<br>
+										<span>Discharge Date : {{ payment_detail.discharge_date }}</span>
+									</div>
+								</div>
+								<!-- /Invoice Head -->
+								<!-- Invoice Content -->
+								<div class="row">
+									<div class="col-sm-6 mb-5">
+										<h6 class="proclinic-text-color">TO:</h6>
+										<span>Patient Name : {{ payment_detail.patient_name }}</span>
+										<br>
+										<span>Doctor Name : {{ payment_detail.doctor_name }}</span>
+										<br>
+										<span>Department : {{ payment_detail.department }}</span>
+										<br>
+										<span>Phone : {{ payment_detail.phone }}</span>
+										<br>
+										<span>Status : {{ payment_detail.status }}</span>
+									</div>
+									<!-- <div class="col-sm-6 mb-5">
+										<h6 class="proclinic-text-color">SHIP TO:</h6>
+										<span>[Name]</span>
+										<br>
+										<span>[Company Name]</span>
+										<br>
+										<span>[Street Address]</span>
+										<br>
+										<span>[City, Zip Code]</span>
+										<br>
+										<span>[Phone]</span>
+									</div> -->
+									<div class="col-sm-12 mb-5">
+										<strong class="proclinic-text-color">COMMENTS OR SPECIAL INSTRUCTIONS:</strong>
+									</div>
+									<div class="col-sm-12">
+										<table class="table table-bordered table-striped table-invioce">
+											<thead>
+												<tr>
+													<th scope="col">No.</th>
+													<th scope="col">Discription</th>
+													<th scope="col">Price</th>
+													<th scope="col">Net Price</th>
+													<th scope="col"></th>
+												</tr>
+											</thead>
+											<tbody>
+                                                
+                                                
+												<tr>
+													<th scope="row">1</th>
+													<td><strong>Service name</strong></td>
+													<td>{{ payment_detail.service_name }}</td>
+													<td>{{ payment_detail.service_name }}</td>
+													<td></td>
+												</tr>
+												<tr>
+													<th scope="row">2</th>
+													<td><strong>Cost Of Treatment</strong></td>
+													<td>{{ payment_detail.cost_of_treatment }}</td>
+													<td>{{ payment_detail.cost_of_treatment }}</td>
+													<td></td>
+												</tr>
+												<tr>
+													<th scope="row">3</th>
+													<td><strong>Advance Paid</strong></td>
+													<td>{{ payment_detail.advance_paid }}</td>
+													<td>{{ payment_detail.advance_paid }}</td>
+													<td></td>
+												</tr>
+												
+											
+                                            
+											</tbody>
+										</table>
+									</div>
+									<div class="col-sm-4 ml-auto">
+										<table class="table table-bordered table-striped">
+											<tbody>
+												<tr>
+													<td>Payment type</td>
+													<td>{{ payment_detail.Payment_type }}</td>
+												</tr>
+												<tr>
+													<td>Card No.</td>
+													<td>{{ payment_detail.card_no }}</td>
+												</tr>
+		
+												<tr>
+													<td>Discount</td>
+													<td>{{ payment_detail.discount }}%</td>
+												</tr>
+												<tr>
+													<td>
+														<strong>GRAND TOTAL</strong>
+													</td>
+													<td>
+														<strong>{{ payment_detail.total }}</strong>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+		
+									<div class="col-sm-12">
+										<div class="border p-4">
+											<strong>Note:</strong>
+											
+											<br>
+											<br>
+											<strong class="f12">Thank you for your payment, have a nice day</strong>
+										</div>
+									</div>
+		
+								</div>
+								<!-- Generate PDF Button -->
+		<div class="text-right mb-4">
+			<button onclick="generatePDF()" class="btn btn-primary">Generate PDF</button>
+		</div>
+		<!-- /Generate PDF Button -->
+		<!-- PDF Generation Script -->
+<script>
+    function generatePDF() {
+        // Print the current page as PDF
+        window.print();
+    }
+</script>
+								<!-- /Invoice Content -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Main Content -->
+
+
+{% endblock %}

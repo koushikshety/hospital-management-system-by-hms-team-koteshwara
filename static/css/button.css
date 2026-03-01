@@ -1,0 +1,10 @@
+
+.animate-on-hover 
+{
+    transition: all 0.3s ease-in-out;
+}
+
+.animate-on-hover:hover 
+{
+    transform: scale(1.1);
+}

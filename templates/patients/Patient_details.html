@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+				<div class="col-md-6">
+					<h3 class="block-title">Patient Details</h3>
+				</div>
+				<div class="col-md-6">
+					<ol class="breadcrumb">						
+						<li class="breadcrumb-item">
+							<a href="/">
+								<span class="ti-home"></span>
+							</a>
+                        </li>
+                        <li class="breadcrumb-item">Patients</li>
+						<li class="breadcrumb-item active">Patient Details</li>
+					</ol>
+				</div>
+			</div>
+			</div>
+			<!-- /Page Title -->
+
+			<!-- /Breadcrumb -->
+			<!-- Main Content -->
+			<div class="container">
+
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-6">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Patient Details</h3>
+							<div class="table-responsive">
+								<table class="table table-bordered">
+									<tbody>
+                                        <tr>
+											<td><strong>patient ID</strong></td>
+											<td>{{ patient.p_id }}</td>
+										</tr>
+										<tr>											
+											<td><strong>Adder</strong></td>
+											<td>{{ patient.p_add }}</td>
+										</tr>
+										<tr>											
+											<td><strong>Name</strong></td>
+											<td>{{ patient.patient_name }}</td>
+										</tr>
+										<tr>
+											<td><strong>Date Of Birth</strong> </td>
+											<td>{{ patient.date_of_birth }}</td>
+										</tr>
+                                        <tr>
+											<td><strong>Age</strong></td>
+											<td>{{ patient.age }}</td>
+										</tr>
+										<tr>
+											<td><strong>Gender</strong></td>
+											<td>{{ patient.gender }}</td>
+										</tr>
+										
+										<tr>
+											<td><strong>Phone </strong></td>
+											<td>{{ patient.phone }}</td>
+										</tr>
+										<tr>
+											<td><strong>Email</strong></td>
+											<td>{{ patient.email }}</td>
+                                        </tr>
+                                        <tr>
+											<td><strong>Address</strong></td>
+											<td>{{ patient.address }}</td>
+										</tr>									
+									</tbody>
+								</table>
+							</div>
+							
+								<!-- Generate PDF Button -->
+		<div class="text-right mb-4">
+			<button onclick="generatePDF()" class="btn btn-primary">Generate PDF</button>
+		</div>
+		<!-- /Generate PDF Button -->
+		<!-- PDF Generation Script -->
+<script>
+    function generatePDF() {
+        // Print the current page as PDF
+        window.print();
+    }
+</script>
+                            
+						</div>
+					</div>
+                    <!-- /Widget Item -->
+                    <!-- Widget Item -->
+					<div class="col-md-6">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Patient Visits</h3>
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>										
+											<th>Doctor Name</th>
+											<th>Appoint Id</th>
+											<th>Visit Date</th>
+											<th>Problem</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for doctor in available_doctors %}
+										<tr>											
+											<td>{{ doctor.d_name }}</td>
+											<td>{{ doctor.a_id }}</td>
+											<td>{{ doctor.appointment_date }}</td>
+											<td>{{ doctor.problem }}</td>
+											<td><span class="badge badge-info">{{ doctor.status }}</span></td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+								
+								
+							</div>
+						</div>
+					</div>
+                    <!-- /Widget Item -->
+                    <!-- Widget Item -->
+					<div class="col-md-12">
+						<div class="widget-area-2 proclinic-box-shadow">
+							<h3 class="widget-title">Patient Payment Transactions</h3>
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>										
+											<th>Payment Id</th>
+											<th>Doctor</th>
+											<th>Patient Name</th>
+											<th>Admission Date</th>
+											<th>Service </th>
+											<th>Disscharge Date</th>
+											<th>Invoive</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for pay in pay %}
+										<tr>											
+											<td>{{ pay.pp_id}}</td>
+											<td>{{ pay.doctor_name}}</td>
+											<td>{{ pay.patient_name }}</td>
+											<td>{{ pay.admission_date }}</td>
+											<td>{{ pay.service_name }}</td>
+											<td>{{ pay.discharge_date }}</td>
+												{% for pay2 in pay2 %}
+												<!-- <td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td> -->
+												<td><a  class="btn btn-primary animate-on-hover" href="{% url 'invoice2' id=pay2.id %}"><span class="ti-eye"> Views</span></a></td>
+												{% endfor %}
+											<td>
+												<span class="badge badge-warning">{{ pay.status }}</span>
+											</td>
+                                        </tr>
+										{% endfor %}
+									</tbody>
+								</table>
+								
+								
+							</div>
+						</div>
+					</div>
+					<!-- /Widget Item -->
+				</div>
+			</div>
+			<!-- /Main Content -->
+
+
+{% endblock %}

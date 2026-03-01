@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!-- Breadcrumb -->
+<style>
+    #map {
+        height: 100vh;
+    }
+</style>
+<div id="map"></div>
+<script>
+    // Create the map
+    var map = L.map('map').setView([20.5937, 78.9629], 5);
+
+    // Add a tile layer (base map)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Load the GeoJSON data for countries
+    fetch('https://unpkg.com/world-atlas@2.0.2/countries-50m.json')
+        .then(response => response.json())
+        .then(data => {
+            // Create a GeoJSON layer and add it to the map
+            L.geoJSON(data, {
+                style: function(feature) {
+                    if (feature.properties.name === 'India') {
+                        return {
+                            fillColor: 'green',
+                            fillOpacity: 0.5,
+                            weight: 1
+                        };
+                    } else {
+                        return {
+                            fillOpacity: 0.5,
+                            weight: 1
+                        };
+                    }
+                },
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                }
+            }).addTo(map);
+        })
+        .catch(error => console.error(error));
+</script>
+<div class="container mt-0">
+    <div class="row breadcrumb-bar">
+        <div class="col-md-6">
+            <h3 class="block-title">Vector Maps</h3>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/">
+                        <span class="ti-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">Maps</li>
+                <li class="breadcrumb-item active">Vector Maps</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <!-- Map Item -->
+        <div class="col-md-12">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">World  Map</h3>
+                <!-- <div id="world-map-maker" class="big-world-mill"></div> -->
+                <img src="{% static 'css/images2/image.png' %}" alt="image comes here">
+            </div>
+        </div>
+        <!-- /Map Item -->
+        <!-- Map Item -->
+        <div class="col-md-6">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">Karnataka</h3>
+                <!-- <div id="world-map-maker" class="big-world-mill"></div> -->
+                <img src="{% static 'css/images2/Kar.png' %}" alt="image comes here">
+            </div>
+        </div>
+        <!-- /Map Item -->
+        <!-- Map Item -->
+        <div class="col-md-6">
+            <div class="widget-area-2 proclinic-box-shadow">
+                <h3 class="widget-title">Udupi</h3>
+                <!-- <div id="world-map-maker" class="big-world-mill"></div> -->
+                <img src="{% static 'css/images2/udupi.png' %}" alt="image comes here">
+            </div>
+        </div>
+        <!-- /Map Item -->
+    </div>
+</div>
+<!-- /Main Content -->
+{% endblock %}

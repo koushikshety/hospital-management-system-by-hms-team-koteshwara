@@ -1,0 +1,139 @@
+/* Body Styles */
+body {    border-radius: 30px;
+  width: 100vh 100%;
+  height: 100vh;
+  border: outset;
+  border: inset;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    /* background-color: rgb(84, 239, 229) !important; */
+    background-image: url(images2/doc.jpg);
+    background-size: cover; /* This line makes the image fit the screen */
+    background-position: center; /* This line centers the image horizontally and vertically */
+  }
+  
+  /* Login Container Styles */
+  #log {
+    margin-left: 300px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 100vh; /* Occupy full viewport height */
+  }
+  
+  /* Login Form Styles */
+  #form-middel {
+    /* background-color: #fff;   */
+    background-color: transparent;
+    padding: 100px;
+    border-radius: 35px;
+    box-shadow: 0 2px 5px red;
+    width: 400px; /* Set width */
+    text-align: center;
+    border: inset; 
+    border: outset;
+  }
+  #form-middel:hover{
+    box-shadow: 0 2px 5px rgb(37, 214, 14);
+
+  }
+  
+  /* Login Title Styles */
+  #form-middel h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333; /* Dark gray text */
+  }
+  
+  /* Login Form Input Styles */
+  form input[type="text"], form input[type="password"] {
+    width: 100%;
+    margin-bottom: 15px;
+    border: none;
+    border: 1px solid #d6cdcd;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 30px;
+    /* background-color: red; */
+  }
+  /* form input[type="text"], form input[type="password"]:hover{
+    background-color: green;
+  } */
+  
+  /* Login Button Styles */
+  form button[type="submit"] {
+    background-color: #007bff; /* Blue background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  form button[type="submit"]:hover {
+    background-color: #0067cc; /* Darker blue on hover */
+  }
+  
+  /* Sign Up Link Styles */
+  a[href] {
+    color: #f1efee; /* Blue link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.2s ease-in-out;
+  }
+  
+  a[href]:hover {
+    color: #f8f4f5; /* Darker blue on hover */
+  }
+
+  #fb{
+    font-size: 20px;
+    margin: 0 10px;
+    color: blue; 
+    transition: color 0.2s ease-in-out;
+  }
+  #yt{
+    font-size: 20px;
+    margin: 0 10px;
+    color: red; 
+    transition: color 0.2s ease-in-out;
+  }
+  #wa{
+    font-size: 20px;
+    margin: 0 10px;
+    color: green; 
+    transition: color 0.2s ease-in-out;
+  }
+  .fa-circle-user{
+    /* border: 3px solid red; */
+    border-radius:50%;
+    border: outset;
+    /* border-radius: 20px; */
+    padding: 30px;
+    
+    /* float: left; */
+}
+#net{
+  background-color: red; /* Blue background */
+  color: #fff; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+  
+  
+  /* Social Media Icon Styles
+  .fa-brands {
+    font-size: 20px;
+    margin: 0 10px;
+    color: #ccc; 
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .fa-brands:hover {
+    color: #007bff; 
+  } */
+  

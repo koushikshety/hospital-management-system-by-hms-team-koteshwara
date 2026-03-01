@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donor Registration Form</title>
+    {% load static %}
+          <!-- messages -->
+          <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+          <!-- messages -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:red;
+        }
+        h1 {width: 70%;
+            border-radius: 10px 10px  100px 100px ;
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(94, 5, 5);
+            color: white;
+        }
+        form {
+            width: 50%;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="date"], input[type="tel"], input[type="email"], select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(145, 11, 11);
+        }
+        
+        #sidebar .sidebar-header {
+        padding: 10px 20px;
+    }
+    #sidebar .sidebar-header .logo {
+        display: none;
+    }
+    
+    #sidebar .sidebar-header .minimal-logo {
+        display: block;
+    }
+    .top-brand .navbar-header{
+        margin-bottom: 10px;    
+    }
+    #logo{
+            /* width: 90px; */
+            /* height: 90px; */
+            display: inline-block;
+            /* color: red; */
+            /* border: 3px solid black; */
+        }
+        #logo img{
+            border:50px;
+            border-radius: 50%;
+            border:outset;
+            border:inset;
+
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1><div class="navbar-header">
+            <div class="sidebar-header">
+            <!-- <a href="#"> -->
+                <div id="logo"><img src="{% static 'images/bdonner1.jpg' %}" alt="logo"> </div>
+                    Be a Hero - Blood Donor Registration Form
+            <!-- </a> -->
+            </div>
+        </div></h1>
+</center>
+
+<center>
+    <main id="success-msg">
+        {% for msg in  messages %}
+            {{msg}}
+        {% endfor %}
+    </main>
+</center>          
+        
+        
+        <form action="{% url 'blooddonner' %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="b_add">B_add:</label>
+            <input type="text" name="b_add" id="b_add" readonly value="{{user.username}}" required>
+        </p>
+        <p>
+                <label for="name">Full Name:</label>
+                <input type="text" name="name" id="name" required>
+            </p>
+            <p>
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" name="date_of_birth" id="date_of_birth" required>
+            </p>
+            <p>
+                <label for="blood_group">Blood Group:</label>
+                <select name="blood_group" id="blood_group" required>
+                    <option value="">Select Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </p>
+            <p>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" name="phone" id="phone" required>
+            </p>
+            <p>
+                <label for="email">Email Address:</label>
+                <input type="email" name="email" id="email"> (Optional)
+            </p>
+            <p>
+                <label for="last_donation">Last Donation Date (if any):</label>
+                <input type="date" name="last_donation" id="last_donation"> (Optional)
+            </p>
+            <p>
+                <input type="checkbox" name="medical_conditions" id="medical_conditions" required>
+                <label for="medical_conditions">I confirm I have no medical conditions that prevent blood donation.</label>
+            </p>
+            <p>
+                <button type="submit">Register as a Blood Donor</button><br>
+            <button id='href'> <span class="ti-home"><a href="/main">Home</a></span></button>
+            </p>
+        </form>
+        
+            <style>
+            #href{
+
+                color:black;
+                
+            }
+            </style>
+</body>
+</html>                    
